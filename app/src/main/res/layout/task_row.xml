@@ -17,12 +17,12 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp">
+            android:layout_height="@dimen/cardview_heigh">
 
             <ImageView
                 android:id="@+id/myImageView"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
                 android:layout_marginStart="24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -42,8 +42,8 @@
 
             <TextView
                 android:id="@+id/description_textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="157dp"
+                android:layout_height="204dp"
                 android:text="Description"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@+id/title_textview"

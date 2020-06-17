@@ -14,13 +14,19 @@ import java.util.ArrayList;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> {
 
+    private View.OnClickListener onItemClickListener;
     ArrayList<Task> tasks;
     Context context;
 
     public TaskAdapter(Context ct, ArrayList<Task> tasks) {
         context = ct;
         this.tasks = tasks;
+        //onItemClickListener = clickListener;
 
+    }
+
+    public void setItemClickListener(View.OnClickListener clickListener) {
+        onItemClickListener = clickListener;
     }
 
     @NonNull
@@ -65,6 +71,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
             statusTextView = itemView.findViewById(R.id.status_textview);
             dateTextView = itemView.findViewById(R.id.date_textview);
             myImage = itemView.findViewById(R.id.myImageView);
+            itemView.setTag(this);
+            itemView.setOnClickListener(onItemClickListener);
         }
     }
 }

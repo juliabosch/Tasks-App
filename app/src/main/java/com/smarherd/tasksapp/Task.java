@@ -45,4 +45,8 @@ public abstract class Task {
         DateFormat df = new SimpleDateFormat(pattern);
         return df.format(date);
     }
+
+    public void changeStatus() {
+        this.status = !status;
+    }
 }

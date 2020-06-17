@@ -8,16 +8,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    public static ArrayList<Task> tasks = new ArrayList<>();/* = {new Email("John", "Email to John", new GregorianCalendar(2020, Calendar.JUNE, 16).getTime()),
-                            new Email("Julia", "Email to Ju", new GregorianCalendar(2020, Calendar.JUNE, 16).getTime()),
-                            new Phone("Albert", "Call Albert", new GregorianCalendar(2020, Calendar.JANUARY, 19).getTime())};
-*/
+    public static ArrayList<Task> tasks = new ArrayList<>();
+
+    private View.OnClickListener onItemClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) v.getTag();
+            int position = viewHolder.getAdapterPosition();
+            Intent intent = new Intent(MainActivity.this, ViewTaskActivity.class);
+            intent.putExtra("position", position);
+
+            startActivity(intent);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +36,43 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerview);
 
-        TaskAdapter taskAdapter = new TaskAdapter(this, tasks);
+        final TaskAdapter taskAdapter = new TaskAdapter(this, tasks);
         recyclerView.setAdapter(taskAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        taskAdapter.setItemClickListener(onItemClickListener);
+
+        SwipeableRecyclerViewTouchListener swipeTouchListener = new SwipeableRecyclerViewTouchListener(recyclerView, new SwipeableRecyclerViewTouchListener.SwipeListener() {
+            @Override
+            public boolean canSwipeLeft(int position) {
+                return true;
+            }
+
+            @Override
+            public boolean canSwipeRight(int position) {
+                return true;
+            }
+
+            @Override
+            public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
+                for (int position : reverseSortedPositions) {
+                    tasks.get(position).changeStatus();
+                    taskAdapter.notifyItemRemoved(position);
+                }
+                taskAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
+                for (int position : reverseSortedPositions) {
+                    tasks.remove(position);
+                    taskAdapter.notifyItemRemoved(position);
+                }
+                taskAdapter.notifyDataSetChanged();
+            }
+        });
+
+        recyclerView.addOnItemTouchListener(swipeTouchListener);
     }
 
     @Override
@@ -50,12 +94,4 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /*public static void setTasks(ArrayList<Task> tasks) {
-        MainActivity.tasks = tasks;
-    }
-
-    public static void addTask(Task task) {
-        tasks.add(task);
-        setTasks(tasks);
-    }*/
 }

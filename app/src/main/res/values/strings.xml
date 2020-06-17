@@ -14,6 +14,10 @@
     <string name="default_title">Title</string>
     <string name="default_description">Description</string>
     <string name="default_date">Date</string>
+    <string name="placeholder">Placeholder</string>
+    <string name="task_icon">Task icon</string>
+    <string name="done_text">Task done</string>
+    <string name="todo_text">Task not done</string>
 
     <string-array name="task_type_array">
         <item>E-mail</item>
