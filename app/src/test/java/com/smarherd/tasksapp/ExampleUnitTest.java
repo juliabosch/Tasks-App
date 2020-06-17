@@ -1,4 +1,4 @@
-package com.smarherd.recipebook;
+package com.smarherd.tasksapp;
 
 import org.junit.Test;
 
