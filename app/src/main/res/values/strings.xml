@@ -18,6 +18,14 @@
     <string name="task_icon">Task icon</string>
     <string name="done_text">Task done</string>
     <string name="todo_text">Task not done</string>
+    <string name="title_hint">Task title</string>
+    <string name="description_hint">Task description</string>
+    <string name="type_hint">Task type</string>
+    <string name="add_button_text">Add task</string>
+    <string name="status_placeholder">Status</string>
+    <string name="description_placeholder">Description</string>
+    <string name="date_placeholder">Date</string>
+    <string name="title_placeholder">Title</string>
 
     <string-array name="task_type_array">
         <item>E-mail</item>

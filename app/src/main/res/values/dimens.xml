@@ -8,4 +8,22 @@
     <dimen name="img_margin">30dp</dimen>
     <dimen name="dsc_top_margin">40dp</dimen>
     <dimen name="cardview_heigh">300dp</dimen>
+    <dimen name="app_margin">20dp</dimen>
+    <dimen name="spinner_height">40dp</dimen>
+    <dimen name="title_size">30sp</dimen>
+    <dimen name="description_size">20sp</dimen>
+    <dimen name="status_size">50sp</dimen>
+    <dimen name="card_margin">10dp</dimen>
+    <dimen name="image_margin_st">24dp</dimen>
+    <dimen name="st_card_margin_t">36dp</dimen>
+    <dimen name="st_card_margin_end">40dp</dimen>
+    <dimen name="dsc_width">157dp</dimen>
+    <dimen name="dsc_height">190dp</dimen>
+    <dimen name="dsc_text_size">16sp</dimen>
+    <dimen name="margin_desc">20dp</dimen>
+    <dimen name="margin_date">15dp</dimen>
+    <dimen name="title_margin_st">28dp</dimen>
+    <dimen name="title_margin_top">12dp</dimen>
+    <dimen name="title_size_txt">24sp</dimen>
+    <dimen name="status_size_txt">16sp</dimen>
 </resources>
